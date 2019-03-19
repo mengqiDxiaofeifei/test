@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>search center</title>
+    <title>搜索</title>
+    <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/jquery.SuperSlide.2.1.1.js"></script>
     <style type="text/css">
-        .inputclass{
+        .inputclass {
             flex-grow: 1;
             padding: 0;
             margin: 0;
@@ -16,7 +19,8 @@
             height: 30px;
             width: 283px;
         }
-        .btnClass{
+
+        .btnClass {
             width: 100px;
             border: none;
             font-family: none;
@@ -27,7 +31,8 @@
             background: rgb(29, 150, 255);
             height: 34px;
         }
-        .search-section{
+
+        .search-section {
             position: relative;
             margin: 0px auto;
             width: 80%;
@@ -36,145 +41,897 @@
             min-height: 50px;
             max-height: 200px;
             transition: height 0.2s ease-out;
-        }
-        .headerclass{
-            width: 100%;
-            height: 110px;
-            font-size: 18px;
-            line-height: 50px;
-            color: #333;
-        }
-        .modeshowClass{
-            width: 278px;
-            padding: 9px;
-            border: 1px solid #e3e3e3;
-            border-bottom-color: #e0e0e0;
-            border-right-color: #ececec;
-            box-shadow: 1px 2px 1px rgba(0,0,0,.072);
-            -webkit-box-shadow: 1px 2px 1px rgba(0,0,0,.072);
-            -moz-box-shadow: 1px 2px 1px rgba(0,0,0,.072);
-            -o-box-shadow: 1px 2px 1px rgba(0,0,0,.072);
-            text-align: left;
-            margin-left: -101px;
-            margin-top: -16px;
-        }
-        .ulclass{
-           margin-top: -8px;
-           list-style-type: none;
-           padding-left: 1px;
-           margin-bottom: -4px;
-        }
-        .opr-toplist1-title {
-             position: relative;
-            margin-bottom: .5px;
+            margin-top: 50px;
+            margin-bottom: 100px;
+            margin-right: 3%;
         }
 
-.cr-title {
-    font-size: 14px;
-    line-height: 1.29;
-    font-weight: 700;
-}
-.hotSearchCla{
-   float: right;
+        .rank_list {
+            line-height: 14px;
+            margin: auto;
+            padding-top: 5px;
+            float: right;
+        }
 
-}
-.c-index-hot, .c-index-hot1 {
-    background-color: #f54545;
-}
+        .rank_list li {
+            height: 14px;
+            margin-bottom: 8px;
+            width: 290px;
+            padding-left: 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+        }
 
-.c-index {
-    display: inline-block;
-    padding: 1px 0;
-    color: #fff;
-    width: 14px;
-    line-height: 100%;
-    font-size: 12px;
-    text-align: center;
-    background-color: red;
-}
-.c-gap-icon-right-small {
-    margin-right: 5px;
-}
+        .rank_list li.top3 em {
+            background: #FFE4B7;
+            border: 1px solid #FFBB8B;
+            color: #FF6800;
+        }
+
+        .rank_list em {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border: 1px solid #B1E0F4;
+            color: #6298CC;
+            font-style: normal;
+            font-size: 10px;
+            font-family: Arial;
+            background: #E6F0FD;
+            text-align: center;
+            line-height: 12px;
+            overflow: hidden;
+        }
+
+        .rank_list span {
+            position: absolute;
+            width: 60px;
+            color: #B7B7B7;
+            text-align: right;
+            height: 14px;
+            left: 230px;
+        }
+
+        #movie_rank .rank_list span {
+            position: absolute;
+            width: 40px;
+            color: #B7B7B7;
+            text-align: right;
+            height: 14px;
+            background: #fff;
+            left: 350px;
+        }
+
+        .rank_list a {
+            color: white;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        a, img {
+            border: 0;
+            text-decoration: none;
+        }
+
+        body {
+            font: 12px/180% Arial, Helvetica, sans-serif, "新宋体";
+        }
+
+        p {
+            margin: 0px;
+            padding: 0px;
+            line-height: 20px;
+        }
+
+        i {
+            margin: 0px;
+            padding: 0px;
+            font-style: normal;
+        }
+
+        ul {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+
+        ul li {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+
+        a {
+            color: #333333;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #ff5a00;
+            text-decoration: none;
+        }
+
+        .clear {
+            clear: both;
+            font-size: 0px;
+            line-height: 0;
+            height: 0;
+        }
+
+        @font-face {
+            font-family: 'icomoon';
+            src: url('fonts/icomoon.eot?qradjf');
+            src: url('fonts/icomoon.eot?qradjf#iefix') format('embedded-opentype'),
+            url('fonts/icomoon.ttf?qradjf') format('truetype'),
+            url('fonts/icomoon.woff?qradjf') format('woff'),
+            url('fonts/icomoon.svg?qradjf#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .demo-icon {
+            font-family: "icomoon";
+            font-style: normal;
+            font-weight: normal;
+            speak: none;
+            display: inline-block;
+            text-decoration: inherit;
+            text-align: center;
+            font-variant: normal;
+            text-transform: none;
+            font-size: 24px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 24px;
+            color: #999;
+        }
+
+        /*new right*/
+        .cndns-right {
+            position: fixed;
+            right: 1px;
+            top: 50%;
+            margin-top: -100px;
+            z-index: 100;
+        }
+
+        .cndns-right-meau {
+            position: relative;
+        }
+
+        .cndns-right-btn {
+            width: 48px;
+            height: 48px;
+            border: 1px solid #ddd;
+            text-align: center;
+            display: block;
+            margin-bottom: 6px;
+            position: relative;
+            background-color: #fff
+        }
+
+        .cndns-right-btn span {
+            color: #848484;
+            font-size: 26px;
+            line-height: 48px;
+        }
+
+        .cndns-right-btn sup {
+            display: block;
+            min-width: 24px;
+            height: 24px;
+            text-align: center;
+            line-height: 24px;
+            color: #fff;
+            border-radius: 50%;
+            background-color: #ff6800;
+            position: absolute;
+            left: -12px;
+            top: -12px;
+        }
+
+        .cndns-right-btn p {
+            color: #ff6800;
+            font-size: 14px;
+            line-height: 18px;
+            padding-top: 5px;
+            display: none;
+        }
+
+        .cndns-right-meau:hover .cndns-right-btn span {
+            display: none
+        }
+
+        .cndns-right-meau:hover .cndns-right-btn p {
+            display: block;
+        }
+
+        .meau-car .cndns-right-btn {
+            border-color: #ff6800;
+            margin-bottom: 20px;
+        }
+
+        .meau-car.cndns-right-meau:hover .cndns-right-btn {
+            background-color: #ff6800
+        }
+
+        .meau-car.cndns-right-meau:hover .cndns-right-btn span {
+            color: #fff;
+            display: block;
+        }
+
+        .meau-car .cndns-right-btn span {
+            color: #ff6800;
+        }
+
+        .meau-sev .cndns-right-btn {
+            border-color: #ff6800;
+            background: url(images/02index-banner-8.gif) no-repeat #ff6800 center;
+        }
+
+        .meau-sev .cndns-right-btn p {
+            color: #fff
+        }
+
+        .meau-sev .cndns-right-btn span {
+            color: #fff
+        }
+
+        .meau-top .cndns-right-btn span {
+            font-size: 12px;
+            line-height: 12px;
+            padding-top: 10px;
+            display: block
+        }
+
+        .meau-top .cndns-right-btn i {
+            display: block;
+            color: #999
+        }
+
+        .meau-top.cndns-right-meau:hover .cndns-right-btn {
+            background-color: #ff6800
+        }
+
+        .meau-top.cndns-right-meau:hover .cndns-right-btn span {
+            display: block;
+            color: #fff
+        }
+
+        .meau-top.cndns-right-meau:hover .cndns-right-btn i {
+            color: #fff;
+        }
+
+        .cndns-right-box {
+            position: absolute;
+            top: -15px;
+            right: 48px;
+            padding-right: 25px;
+            display: none;
+        }
+
+        .cndns-right-box .box-border {
+            border: 1px solid #ccc;
+            border-top: 4px solid #ff6800;
+            padding: 20px;
+            background-color: #fff;
+            -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .15);
+            -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, .15);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, .15);
+            position: relative
+        }
+
+        .cndns-right-box .box-border .arrow-right {
+            display: block;
+            width: 13px;
+            height: 16px;
+            background: url(images/arrow.png) no-repeat;
+            position: absolute;
+            right: -13px;
+            top: 26px;
+        }
+
+        .cndns-right-box .box-border .sev-t span {
+            font-size: 42px;
+            float: left;
+            display: block;
+            line-height: 56px;
+            margin-right: 20px;
+            color: #d3d3d3
+        }
+
+        .cndns-right-box .box-border .sev-t p {
+            float: left;
+            color: #ff6800;
+            font-size: 24px;
+            line-height: 28px;
+        }
+
+        .cndns-right-box .box-border .sev-t p i {
+            display: block;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .cndns-right-box .box-border .sev-b {
+            padding-top: 15px;
+            margin-top: 15px;
+            border-top: 1px solid #e4e4e4
+        }
+
+        .cndns-right-box .box-border .sev-b h4 {
+            color: #666;
+            font-size: 14px;
+            font-weight: normal;
+            padding-bottom: 15px;
+        }
+
+        .cndns-right-box .box-border .sev-b li {
+            float: left;
+            width: 33.33333%
+        }
+
+        .cndns-right-box .box-border .sev-b li a {
+            display: inline-block;
+            color: #999;
+            font-size: 13px;
+            padding-left: 43px;
+            background: url(images/q1.gif) no-repeat left 3px;
+            line-height: 36px;
+        }
+
+        .cndns-right-box .box-border .sev-b li a:hover {
+            color: #ff6800
+        }
+
+        .meau-sev .cndns-right-box .box-border {
+            width: 430px;
+        }
+
+        .meau-contact .cndns-right-box .box-border {
+            width: 230px;
+        }
+
+        .cndns-right-meau:hover .cndns-right-box {
+            display: block
+        }
+
+        .meau-code .cndns-right-box {
+            top: inherit;
+            bottom: -35px;
+        }
+
+        .meau-code .cndns-right-box .box-border {
+            width: 160px;
+            text-align: center;
+            border-top: 1px solid #ccc;
+        }
+
+        .meau-code .cndns-right-box .box-border i {
+            display: block;
+            color: #f66e06;
+            font-size: 16px;
+            line-height: 16px;
+        }
+
+        .meau-code .cndns-right-box .box-border .arrow-right {
+            top: inherit;
+            bottom: 50px;
+        }
+
+        .meau-sev .cndns-right-btn .demo-icon {
+            display: none;
+        }
+
+        .meau-sev:hover .cndns-right-btn {
+            background: #ff6800
+        }
+
+        .meau-zs .cndns-right-btn {
+            background-color: #ff6800;
+            color: #fff;
+            margin-top: 80px;
+            border-color: #ff6800
+        }
+
+        .meau-zs .cndns-right-btn span {
+            color: #fff
+        }
+
+        .meau-zs .cndns-right-btn p {
+            color: #fff
+        }
+        .rank_list a{
+            cursor:pointer;
+        }
     </style>
-    <script src="../jquery-1.10.2.min.js"></script>
 </head>
 <body>
-    <div align="center">
-        <div class="headerclass"></div>
-        
-        <div style="algin:center">
+<script src="../demos/googlegg.js"></script>
+<div>
+    <div style="float: left;">
+        <div>
+            <span style="color: red;font-weight:200;font-size: 20px">热搜榜</span>
+            <img src="images/fire.png" style="width: 30px">
+        </div>
+        <ul class="rank_list">
+            <li class="top3"><em>1</em><a title="埃航坠毁俯冲状态" target="_blank">
+                埃航坠毁俯冲状态</a><span>1189万</span></li>
+            <li class="top3"><em>2</em><a title="教师猥亵女童改判" target="_blank">
+                教师猥亵女童改判</a><span>528万</span></li>
+            <li class="top3"><em>3</em><a title="父亲生死投票决定" target="_blank">
+                华为专利申请第一</a><span>432万</span></li>
+            <li><em>4</em><a title="Js实现的层展开、层折叠效果，默认时候层是折叠的" target="_blank"
+            >
+                强气旋袭莫桑比克</a><span>374万</span></li>
+            <li><em>5</em><a title="DIV始终固定在网页右下角位置的CSS实现方法" target="_blank"
+            >
+                高中女生发不搭肩</a><span>256万</span></li>
+            <li><em>6</em><a title="JavaScript未知高度元素的垂直居中的方法" target="_blank"
+            >
+                胡杏儿宣萱陈慧珊</a><span>185万</span></li>
+            <li><em>7</em><a
+                    title="JS 4屏平滑滚动<a href='http://www.daimajiayuan.com/sitejs-15579-1.html' target='_blank'><u>幻灯片</u></a>特效"
+                    target="_blank">
+                张紫妍案证人发声</a><span>95万</span></li>
+            <li><em>8</em><a title="CSS Sprite制作的鼠标感应网站导航条" target="_blank"
+            >
+                315晚会点名电子烟</a><span>85万</span></li>
+            <li><em>9</em><a
+                    title="[酷] 又一款FLASH<a href='http://www.daimajiayuan.com/list-58.html' target='_blank'><u>图片切换</u></a>效果代码"
+                    target="_blank">
+                章子怡为女儿擦嘴</a><span>51万</span></li>
+            <li><em>10</em><a title="鼠标经过列表显示小图的列表特效代码" target="_blank"
+            >
+                父亲生死投票决定</a><span>32万</span></li>
+        </ul>
+    </div>
+    <div class="set-content">
+        <div style="height: 80px;">
             <div class="search-section">
-            <input type="text" class="inputclass" placeholder="请输入搜索内容" >
-            <input type="button" class="btnClass" value="搜索 ">
+                <input type="text" class="inputclass" placeholder="请输入搜索内容">
+                <input type="button" class="btnClass" value="搜索" onclick="baiduSearch()">
             </div>
-            <div class="modeshowClass" style="display: none;">
-            <ul id="ulID" class="ulclass">
-            </ul>
+        </div>
+        <div style="text-align: center">
+            <div class="set-title hd">
+                <ul class="clearfix">
+                    <li class="on">IT互联网</li>
+                    <li>金融</li>
+                    <li>房地产</li>
+                    <li>汽车</li>
+                    <li>医疗健康</li>
+                    <li>消费品</li>
+                </ul>
             </div>
-            <div class="hotSearchCla">
-                <span class="cr-title opr-toplist1-title">热搜词</span>
-                <table>
-                    <tr>
-                        <td>
-                            <span class="c-index  c-index-hot1 c-gap-icon-right-small">1</span>
-                        </td>
-                        <td>
-                            <span>哈哈哈</span>
-                        </td>
-                    </tr>
-                       <tr>
-                        <td>
-                            <span class="c-index  c-index-hot1 c-gap-icon-right-small">2</span>
-                        </td>
-                        <td>
-                            <span>哈哈</span>
-                        </td>
-                    </tr>
-                       <tr>
-                        <td>
-                            <span class="c-index  c-index-hot1 c-gap-icon-right-small">3</span>
-                        </td>
-                        <td>
-                            <span>哈哈</span>
-                        </td>
-                    </tr>
-                </table>
+            <div class="set-middle bd">
+                <ul class="set-middle-item">
+                    <li>
+                        <div class="set-middle-image">
+                            <img src="images/item001.png" alt="">
+                            <img src="images/item002.png" alt="">
+                            <img src="images/item003.png" alt="">
+                            <img src="images/item004.png" alt="">
+                            <img src="images/item005.png" alt="">
+                            <img src="images/item006.png" alt="">
+                            <img src="images/item007.png" alt="">
+                            <img src="images/item008.png" alt="">
+                        </div>
+                        <div class="set-middle-list">
+                            <ul>
+                                <li>
+                                    <div class="set-ali">阿里巴巴</div>
+                                    <div class="set-java">Java技术专家</div>
+                                    <div class="set-salary">20K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li>
+                                    <div class="set-ali">华为</div>
+                                    <div class="set-java"> 架构师</div>
+                                    <div class="set-salary">25K - 50K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li>
+                                    <div class="set-ali">京东商城</div>
+                                    <div class="set-java">web前端工程师</div>
+                                    <div class="set-salary">20K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li>
+                                    <div class="set-ali">小米</div>
+                                    <div class="set-java">Java技术专家</div>
+                                    <div class="set-salary">30K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li style="border-bottom:none">
+                                    <div class="set-ali">网易</div>
+                                    <div class="set-java">自身IOS开发</div>
+                                    <div class="set-salary">10K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="set-middle-item">
+                    <li>
+                        <div class="set-middle-image">
+                            <img src="images/item009.png" alt="">
+                            <img src="images/item010.png" alt="">
+                            <img src="images/item011.png" alt="">
+                            <img src="images/item012.png" alt="">
+                            <img src="images/item013.png" alt="">
+                            <img src="images/item014.png" alt="">
+                            <img src="images/item015.png" alt="">
+                            <img src="images/item016.png" alt="">
+                        </div>
+                        <div class="set-middle-list">
+                            <ul>
+                                <li>
+                                    <div class="set-ali">优信</div>
+                                    <div class="set-java">Java技术专家</div>
+                                    <div class="set-salary">20K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li>
+                                    <div class="set-ali">新网银行</div>
+                                    <div class="set-java"> 架构师</div>
+                                    <div class="set-salary">25K - 50K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li>
+                                    <div class="set-ali">宜信</div>
+                                    <div class="set-java">web前端工程师</div>
+                                    <div class="set-salary">20K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li>
+                                    <div class="set-ali">京东金融</div>
+                                    <div class="set-java">Java技术专家</div>
+                                    <div class="set-salary">30K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li style="border-bottom:none">
+                                    <div class="set-ali">爱花钱</div>
+                                    <div class="set-java">自身IOS开发</div>
+                                    <div class="set-salary">10K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="set-middle-item">
+                    <li>
+                        <div class="set-middle-image">
+                            <img src="images/item001.png" alt="">
+                            <img src="images/item002.png" alt="">
+                            <img src="images/item003.png" alt="">
+                            <img src="images/item004.png" alt="">
+                            <img src="images/item005.png" alt="">
+                            <img src="images/item006.png" alt="">
+                            <img src="images/item007.png" alt="">
+                            <img src="images/item008.png" alt="">
+                        </div>
+                        <div class="set-middle-list">
+                            <ul>
+                                <li>
+                                    <div class="set-ali">阿里巴巴</div>
+                                    <div class="set-java">Java技术专家</div>
+                                    <div class="set-salary">20K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li>
+                                    <div class="set-ali">华为</div>
+                                    <div class="set-java"> 架构师</div>
+                                    <div class="set-salary">25K - 50K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li>
+                                    <div class="set-ali">京东商城</div>
+                                    <div class="set-java">web前端工程师</div>
+                                    <div class="set-salary">20K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li>
+                                    <div class="set-ali">小米</div>
+                                    <div class="set-java">Java技术专家</div>
+                                    <div class="set-salary">30K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li style="border-bottom:none">
+                                    <div class="set-ali">网易</div>
+                                    <div class="set-java">自身IOS开发</div>
+                                    <div class="set-salary">10K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="set-middle-item">
+                    <li>
+                        <div class="set-middle-image">
+                            <img src="images/item001.png" alt="">
+                            <img src="images/item002.png" alt="">
+                            <img src="images/item003.png" alt="">
+                            <img src="images/item004.png" alt="">
+                            <img src="images/item005.png" alt="">
+                            <img src="images/item006.png" alt="">
+                            <img src="images/item007.png" alt="">
+                            <img src="images/item008.png" alt="">
+                        </div>
+                        <div class="set-middle-list">
+                            <ul>
+                                <li>
+                                    <div class="set-ali">阿里巴巴</div>
+                                    <div class="set-java">Java技术专家</div>
+                                    <div class="set-salary">20K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li>
+                                    <div class="set-ali">华为</div>
+                                    <div class="set-java"> 架构师</div>
+                                    <div class="set-salary">25K - 50K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li>
+                                    <div class="set-ali">京东商城</div>
+                                    <div class="set-java">web前端工程师</div>
+                                    <div class="set-salary">20K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li>
+                                    <div class="set-ali">小米</div>
+                                    <div class="set-java">Java技术专家</div>
+                                    <div class="set-salary">30K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li style="border-bottom:none">
+                                    <div class="set-ali">网易</div>
+                                    <div class="set-java">自身IOS开发</div>
+                                    <div class="set-salary">10K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="set-middle-item">
+                    <li>
+                        <div class="set-middle-image">
+                            <img src="images/item001.png" alt="">
+                            <img src="images/item002.png" alt="">
+                            <img src="images/item003.png" alt="">
+                            <img src="images/item004.png" alt="">
+                            <img src="images/item005.png" alt="">
+                            <img src="images/item006.png" alt="">
+                            <img src="images/item007.png" alt="">
+                            <img src="images/item008.png" alt="">
+                        </div>
+                        <div class="set-middle-list">
+                            <ul>
+                                <li>
+                                    <div class="set-ali">阿里巴巴</div>
+                                    <div class="set-java">Java技术专家</div>
+                                    <div class="set-salary">20K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li>
+                                    <div class="set-ali">华为</div>
+                                    <div class="set-java"> 架构师</div>
+                                    <div class="set-salary">25K - 50K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li>
+                                    <div class="set-ali">京东商城</div>
+                                    <div class="set-java">web前端工程师</div>
+                                    <div class="set-salary">20K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li>
+                                    <div class="set-ali">小米</div>
+                                    <div class="set-java">Java技术专家</div>
+                                    <div class="set-salary">30K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li style="border-bottom:none">
+                                    <div class="set-ali">网易</div>
+                                    <div class="set-java">自身IOS开发</div>
+                                    <div class="set-salary">10K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="set-middle-item">
+                    <li>
+                        <div class="set-middle-image">
+                            <img src="images/item001.png" alt="">
+                            <img src="images/item002.png" alt="">
+                            <img src="images/item003.png" alt="">
+                            <img src="images/item004.png" alt="">
+                            <img src="images/item005.png" alt="">
+                            <img src="images/item006.png" alt="">
+                            <img src="images/item007.png" alt="">
+                            <img src="images/item008.png" alt="">
+                        </div>
+                        <div class="set-middle-list">
+                            <ul>
+                                <li>
+                                    <div class="set-ali">阿里巴巴</div>
+                                    <div class="set-java">Java技术专家</div>
+                                    <div class="set-salary">20K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li>
+                                    <div class="set-ali">华为</div>
+                                    <div class="set-java"> 架构师</div>
+                                    <div class="set-salary">25K - 50K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li>
+                                    <div class="set-ali">京东商城</div>
+                                    <div class="set-java">web前端工程师</div>
+                                    <div class="set-salary">20K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li>
+                                    <div class="set-ali">小米</div>
+                                    <div class="set-java">Java技术专家</div>
+                                    <div class="set-salary">30K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                                <li style="border-bottom:none">
+                                    <div class="set-ali">网易</div>
+                                    <div class="set-java">自身IOS开发</div>
+                                    <div class="set-salary">10K - 40K</div>
+                                    <div class="set-more">更多工作</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-</body>
-<script>
-    $(function () {
-        $(".inputclass").keydown(function () {
-            $.get("http://localhost:8888/test/search?keyword="+$(".inputclass").val()+"&page=3&size=20",function (data){
-                $("#ulID").html("");
-                if(data != null || data.length != 0){
-                    for (var i = 0; i < 5 ; i++) {
-                       // if(data[i].shopName != null){
-                           $("#ulID").append("<a href='#' style='text-decoration: none' onclick='addSearch("+data[i].id+",&quot"+data[i].shopName+"&quot);'>"+ data[i].shopName+"</a><br/>");
-                        }
-                    } 
-            })
-            $(".modeshowClass").css("display","block");
-        });
-     /*  $(".inputclass").blur(function () {
-            $(".modeshowClass").css("display","none");
-        });*/
-       
-        $(".inputclass").keyup(function () {
-            //
-        });
-  /* $(".inputclass").focus(function () {
-            $(".modeshowClass").css("display","block");
-        });*/
+</div>
 
+
+<!--右侧-->
+<div class="cndns-right">
+    <div class="cndns-right-meau meau-car">
+        <a href="#" class="cndns-right-btn">
+            <span class="demo-icon">&#xe905;</span>
+            <sup>0</sup>
+        </a>
+    </div>
+    <div class="cndns-right-meau meau-sev">
+        <a href="javascript:" class="cndns-right-btn">
+            <span class="demo-icon">&#xe901;</span>
+            <p>
+                在线<br/>
+                客服
+            </p>
+        </a>
+        <div class="cndns-right-box">
+            <div class="box-border">
+                <div class="sev-t">
+                    <span class="demo-icon">&#xe901;</span>
+                    <p>在线客服<i>服务时间：9:00-24:00</i></p>
+                    <div class="clear"></div>
+                </div>
+                <div class="sev-b">
+                    <h4>选择下列产品马上在线沟通：</h4>
+                    <ul id="zixunUl">
+                        <li><a href="javascript:void(0);">域名/主机</a></li>
+
+                        <li><a href="javascript:void(0);">建站/网店</a></li>
+                        <li><a href="javascript:void(0);">企业邮局</a></li>
+                        <li><a href="javascript:void(0);">代理咨询</a></li>
+                        <li><a href="javascript:void(0);">网站推广</a></li>
+                        <li><a href="javascript:void(0);">橙云主机</a></li>
+
+                        <li><a href="javascript:void(0);">域名交易</a></li>
+
+                        <li><a href="javascript:void(0);">租用托管(BGP)</a></li>
+
+                        <li><a href="javascript:void(0);">其他产品</a></li>
+                        <div class="clear"></div>
+                    </ul>
+                </div>
+                <span class="arrow-right"></span>
+            </div>
+        </div>
+    </div>
+    <div class="cndns-right-meau meau-contact">
+        <a href="javascript:" class="cndns-right-btn">
+            <span class="demo-icon">&#xe902;</span>
+            <p>
+                客服<br/>
+                热线
+            </p>
+        </a>
+        <div class="cndns-right-box">
+            <div class="box-border">
+                <div class="sev-t">
+                    <span class="demo-icon">&#xe902;</span>
+                    <p>400-123-4567<br/><i>7*24小时客服服务热线</i></p>
+                    <div class="clear"></div>
+                </div>
+                <span class="arrow-right"></span>
+            </div>
+        </div>
+    </div>
+    <div class="cndns-right-meau meau-code">
+        <a href="javascript:" class="cndns-right-btn">
+            <span class="demo-icon">&#xe903;</span>
+            <p>
+                关注<br/>
+                微信
+            </p>
+        </a>
+        <div class="cndns-right-box">
+            <div class="box-border">
+                <div class="sev-t">
+                    <img src="images/02index-2.jpg" style="width: 160px;height: 120px"/>
+                    <i>关注官方微信</i>
+                </div>
+                <span class="arrow-right"></span>
+            </div>
+        </div>
+    </div>
+    <div class="cndns-right-meau meau-car">
+        <a href="#" class="cndns-right-btn">
+            <span class="demo-icon">&#xe907;</span>
+        </a>
+    </div>
+    <div class="cndns-right-meau meau-top" id="top-back">
+        <a href="javascript:" class="cndns-right-btn" onclick="topBack()">
+            <span class="demo-icon">&#xe904;</span>
+            <i>顶部</i>
+        </a>
+    </div>
+
+</div>
+<script>
+    jQuery(".set-content").slide({autoPlay: false, trigger: "mouseenter", delayTime: 100, pnLoop: false});
+
+    function baiduSearch() {
+        window.open("https://www.baidu.com/s?ie=utf-8&wd=" + $(".inputclass").val());
+    }
+
+    $(".rank_list a").each(function () {
+        $(this).click(function () {
+            window.open("https://www.baidu.com/s?ie=utf-8&wd=" + $(this).text());
+        })
+    })
+</script>
+<script type="text/javascript">
+    //置顶图标显示
+    $('#top-back').hide()
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 350) {
+            $("#top-back").fadeIn();
+        }
+        else {
+            $("#top-back").fadeOut();
+        }
     })
 
-    function addSearch(id,shopName) {
-      $(".modeshowClass").css("display","none");
-            $(".inputclass").val(shopName);
-        }
-  
-      
+    //置顶事件
+    function topBack() {
+        $('body,html').animate({scrollTop: 0}, 300);
+    }
 </script>
+
+</body>
 </html>
