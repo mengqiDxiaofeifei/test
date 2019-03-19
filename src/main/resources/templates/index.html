@@ -4,8 +4,20 @@
     <meta charset="UTF-8">
     <title>搜索</title>
     <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../css/swiper.min.css">
     <script src="../js/jquery.js"></script>
     <script src="../js/jquery.SuperSlide.2.1.1.js"></script>
+    <style type="text/css">
+        .swiper-container {
+            width: 582px;
+            height: 232px;
+            position: relative;
+        }
+        .swiper-wrapper img{
+            height: 100%;
+            width: 100%;
+        }
+    </style>
     <style type="text/css">
         .inputclass {
             flex-grow: 1;
@@ -514,22 +526,13 @@
             <div class="set-middle bd">
                 <ul class="set-middle-item">
                     <li>
-                        <div class="set-middle-image">
-                            <img src="images/item001.png" alt="">
-                            <img src="images/item002.png" alt="">
-                            <img src="images/item003.png" alt="">
-                            <img src="images/item004.png" alt="">
-                            <img src="images/item005.png" alt="">
-                            <img src="images/item006.png" alt="">
-                            <img src="images/item007.png" alt="">
-                            <img src="images/item008.png" alt="">
-                        </div>
                         <div class="set-middle-list">
                             <ul>
                                 <li>
                                     <div class="set-ali">阿里巴巴</div>
                                     <div class="set-java">Java技术专家</div>
                                     <div class="set-salary">20K - 40K</div>
+                                    <div class="set-more">更多工作</div>
                                     <div class="set-more">更多工作</div>
                                 </li>
                                 <li>
@@ -544,19 +547,25 @@
                                     <div class="set-salary">20K - 40K</div>
                                     <div class="set-more">更多工作</div>
                                 </li>
-                                <li>
-                                    <div class="set-ali">小米</div>
-                                    <div class="set-java">Java技术专家</div>
-                                    <div class="set-salary">30K - 40K</div>
-                                    <div class="set-more">更多工作</div>
-                                </li>
-                                <li style="border-bottom:none">
-                                    <div class="set-ali">网易</div>
-                                    <div class="set-java">自身IOS开发</div>
-                                    <div class="set-salary">10K - 40K</div>
-                                    <div class="set-more">更多工作</div>
-                                </li>
                             </ul>
+                        </div>
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="images/1.jpg" alt="">
+                                </div>
+                                <div class="swiper-slide"><img src="images/2.jpg" alt=""></div>
+                                <div class="swiper-slide"><img src="images/3.jpg" alt=""></div>
+                            </div>
+                            <!-- 如果需要分页器 -->
+                            <div class="swiper-pagination"></div>
+
+                            <!-- 如果需要导航按钮 -->
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+
+                            <!-- 如果需要滚动条 -->
+                            <div class="swiper-scrollbar"></div>
                         </div>
                     </li>
                 </ul>
@@ -902,6 +911,31 @@
     </div>
 
 </div>
+
+<script src="../js/swiper.min.js"></script>
+<script>
+    var mySwiper = new Swiper ('.swiper-container', {
+        loop: true, // 循环模式选项
+
+        // 如果需要分页器
+        pagination: {
+            el: '.swiper-pagination',
+        },
+
+        // 如果需要前进后退按钮
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+        // 如果需要滚动条
+        scrollbar: {
+            el: '.swiper-scrollbar',
+        },
+    })
+</script>
+
+
 <script>
     jQuery(".set-content").slide({autoPlay: false, trigger: "mouseenter", delayTime: 100, pnLoop: false});
 
