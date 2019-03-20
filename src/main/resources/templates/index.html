@@ -9,9 +9,10 @@
     <script src="../js/jquery.SuperSlide.2.1.1.js"></script>
     <style type="text/css">
         .swiper-container {
-            width: 582px;
+            width: 284px;
             height: 232px;
             position: relative;
+            float: left;
         }
         .swiper-wrapper img{
             height: 100%;
@@ -463,6 +464,140 @@
         .rank_list a{
             cursor:pointer;
         }
+        .li-div{
+            float: right;
+            width: 250px;
+            height: 232px;
+            position: relative;
+            margin-top: 10px;
+        }
+        .li-item{
+            text-align: left;
+            margin-left: 0px;
+        }
+        .li-item-weight{
+            text-align: left;
+            margin-left: 0px;
+        }
+        .li-item-weight a{
+            font-size: 15px;
+            font-weight: 300;
+            color: white;
+            overflow: hidden;
+            left: auto;
+        }
+        .li-item a{
+            font-size: 10px;
+            color: honeydew;
+            overflow: hidden;
+            left: auto;
+        }
+
+
+        /*新加的*/
+
+        .swiper-wrapper{
+        }
+        .swiper-slide {
+            width:978px;
+            transition-timing-function:linear;
+        }
+        @media only screen and (max-width:1200px){
+            .swiper-slide {
+                width:770px;
+            }
+        }
+        @media only screen and (max-width:980px){
+            .swiper-slide {
+                width:471px;
+            }
+        }
+        @media only screen and (max-height:480px){
+            .swiper-slide {
+                width:471px;
+            }
+        }
+        .swiper-slide img{
+            width:100%;
+            border-radius: 4px;}
+        .swiper-slide .title{
+            position:absolute;
+            transform:rotate(90deg);
+            transform-origin:left top;
+            left:-3px;
+            font-size:11px;
+            color: rgb(102, 102, 102);}
+        .swiper-button-next, .swiper-button-prev{
+            width: 91px;
+            height: 26px;
+            background-size:86px 112px;
+            margin-top:-56px;
+            outline:none;}
+        .swiper-button-next{
+            background-image:url(img/cursor-next.png);}
+        .swiper-button-prev{
+            background-image:url(img/cursor-prev.png);}
+        .swiper-pagination-bullet{
+            background:none;
+            opacity:1;
+            margin:0 6px !important;
+            width:9px;
+            height:9px;
+            position:relative;
+            outline:none;
+            vertical-align:middle;}
+        .swiper-pagination-bullet span{
+            width:3px;
+            height:3px;
+            background:#CCC;
+            display:block;
+            border-radius:50%;
+            margin-top:3px;
+            margin-left:3px;
+        }
+        .swiper-pagination-bullet i{
+            background:#000;
+            height:1px;
+            width:20px;
+            position:absolute;
+            top:4px;
+            transform:scaleX(0);
+            transform-origin:left;
+            z-index:3;
+            transition-timing-function:linear;
+        }
+        .swiper-pagination-bullet-active span,.swiper-pagination-bullet:hover span{
+            width:9px;
+            height:9px;
+            margin-top:0;
+            margin-left:0;
+            background:#000;
+            position:relative;
+            z-index:1;
+        }
+        .swiper-pagination-bullet-active i{
+            animation:middle 6s;
+        }
+        .swiper-pagination-bullet:first-child.swiper-pagination-bullet-active i{
+            animation:first 6s;
+        }
+        .swiper-pagination-bullet:last-child.swiper-pagination-bullet-active i{
+            animation:last 6s;
+        }
+        @keyframes first{
+            0% {transform:scaleX(0.5);left:0px;}/*091*/
+            100% {transform:scaleX(1);left:2px;} /*0915*/
+        }
+        @keyframes last{
+            0% {transform:scaleX(0.7);left:-10px;}/*1090*/
+            20% {transform:scaleX(0.3);left:2px;} /*090*/
+            100% {transform:scaleX(0.3);left:0px;} /*090*/
+        }
+        @keyframes middle{
+            0% {transform:scaleX(0.7);left:-10px;}/*1091*/
+            20% {transform:scaleX(0.45);left:2px;}/*092*/
+            100% {transform:scaleX(1);left:2px;} /*0913*/
+        }
     </style>
 </head>
 <body>
@@ -515,60 +650,84 @@
         <div style="text-align: center">
             <div class="set-title hd">
                 <ul class="clearfix">
-                    <li class="on">IT互联网</li>
-                    <li>金融</li>
-                    <li>房地产</li>
-                    <li>汽车</li>
-                    <li>医疗健康</li>
-                    <li>消费品</li>
+                    <li class="on">新闻</li>
+                    <li>图片</li>
+                    <li>视频</li>
+                    <li>段子</li>
+                    <li>游戏</li>
+                    <li>音乐</li>
                 </ul>
             </div>
             <div class="set-middle bd">
+                <!--新闻-->
                 <ul class="set-middle-item">
                     <li>
                         <div class="set-middle-list">
                             <ul>
                                 <li>
-                                    <div class="set-ali">阿里巴巴</div>
-                                    <div class="set-java">Java技术专家</div>
-                                    <div class="set-salary">20K - 40K</div>
-                                    <div class="set-more">更多工作</div>
-                                    <div class="set-more">更多工作</div>
+                                    <div class="set-java">国际</div>
+                                    <div class="set-java">国内</div>
+                                    <div class="set-java">军事</div>
+                                    <div class="set-java">财经</div>
+                                    <div class="set-java">娱乐</div>
                                 </li>
                                 <li>
-                                    <div class="set-ali">华为</div>
-                                    <div class="set-java"> 架构师</div>
-                                    <div class="set-salary">25K - 50K</div>
-                                    <div class="set-more">更多工作</div>
+                                    <div class="set-java">体育</div>
+                                    <div class="set-java">互联网</div>
+                                    <div class="set-java">科技</div>
+                                    <div class="set-java">游戏</div>
+                                    <div class="set-java">女人</div>
                                 </li>
                                 <li>
-                                    <div class="set-ali">京东商城</div>
-                                    <div class="set-java">web前端工程师</div>
-                                    <div class="set-salary">20K - 40K</div>
-                                    <div class="set-more">更多工作</div>
+                                    <div class="set-java">汽车</div>
+                                    <div class="set-java">房产</div>
+                                    <div class="set-java">探索</div>
+                                    <div class="set-java">健康</div>
+                                    <div class="set-java">更多</div>
                                 </li>
                             </ul>
                         </div>
-                        <div class="swiper-container">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <img src="images/1.jpg" alt="">
-                                </div>
-                                <div class="swiper-slide"><img src="images/2.jpg" alt=""></div>
-                                <div class="swiper-slide"><img src="images/3.jpg" alt=""></div>
-                            </div>
-                            <!-- 如果需要分页器 -->
-                            <div class="swiper-pagination"></div>
+                       <div>
+                           <div class="li-div">
+                               <span style="color: #4fc0c8;font-weight:200;font-size: 20px">热点要闻</span>
+                               <ul>
+                                   <li class="li-item-weight"><a href="">习近平主持召开中央全面深改委员会</a></li>
+                                   <li class="li-item"><a href="">习近平:友谊不是偶然的选择 而是志同道</a></li>
+                                   <li class="li-item"><a href="">办好思政课关键在教师 培养社会主义建</a></li>
+                               </ul>
+                               <ul>
+                                   <li class="li-item-weight"><a href="">习近平主持召开中央全面深改委员会</a></li>
+                                   <li class="li-item"><a href="">习近平:友谊不是偶然的选择 而是志同道</a></li>
+                                   <li class="li-item"><a href="">办好思政课关键在教师 培养社会主义建设</a></li>
+                               </ul>
+                               <ul>
+                                   <li class="li-item-weight"><a href="">习近平主持召开中央全面深改委员会</a></li>
+                                   <li class="li-item"><a href="">习近平:友谊不是偶然的选择 而是志同道</a></li>
+                                   <li class="li-item"><a href="">办好思政课关键在教师 培养社会主义建设</a></li>
+                               </ul>
+                           </div>
+                           <div class="swiper-container">
+                               <div class="swiper-wrapper">
+                                   <div class="swiper-slide">
+                                       <img src="images/1.jpg" alt="">
+                                   </div>
+                                   <div class="swiper-slide"><img src="images/2.jpg" alt=""></div>
+                                   <div class="swiper-slide"><img src="images/3.jpg" alt=""></div>
+                               </div>
+                               <!-- 如果需要分页器 -->
+                               <div class="swiper-pagination"></div>
 
-                            <!-- 如果需要导航按钮 -->
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
+                               <!-- 如果需要导航按钮 -->
+                               <div class="swiper-button-prev"></div>
+                               <div class="swiper-button-next"></div>
 
-                            <!-- 如果需要滚动条 -->
-                            <div class="swiper-scrollbar"></div>
-                        </div>
+                               <!-- 如果需要滚动条 -->
+                               <div class="swiper-scrollbar"></div>
+                           </div>
+                       </div>
                     </li>
                 </ul>
+                <!--图片-->
                 <ul class="set-middle-item">
                     <li>
                         <div class="set-middle-image">
@@ -617,6 +776,7 @@
                         </div>
                     </li>
                 </ul>
+                <!--视频-->
                 <ul class="set-middle-item">
                     <li>
                         <div class="set-middle-image">
@@ -665,6 +825,7 @@
                         </div>
                     </li>
                 </ul>
+                <!--段子-->
                 <ul class="set-middle-item">
                     <li>
                         <div class="set-middle-image">
@@ -713,6 +874,7 @@
                         </div>
                     </li>
                 </ul>
+                <!--视频-->
                 <ul class="set-middle-item">
                     <li>
                         <div class="set-middle-image">
@@ -761,52 +923,11 @@
                         </div>
                     </li>
                 </ul>
+                <!--音乐-->
                 <ul class="set-middle-item">
                     <li>
-                        <div class="set-middle-image">
-                            <img src="images/item001.png" alt="">
-                            <img src="images/item002.png" alt="">
-                            <img src="images/item003.png" alt="">
-                            <img src="images/item004.png" alt="">
-                            <img src="images/item005.png" alt="">
-                            <img src="images/item006.png" alt="">
-                            <img src="images/item007.png" alt="">
-                            <img src="images/item008.png" alt="">
-                        </div>
-                        <div class="set-middle-list">
-                            <ul>
-                                <li>
-                                    <div class="set-ali">阿里巴巴</div>
-                                    <div class="set-java">Java技术专家</div>
-                                    <div class="set-salary">20K - 40K</div>
-                                    <div class="set-more">更多工作</div>
-                                </li>
-                                <li>
-                                    <div class="set-ali">华为</div>
-                                    <div class="set-java"> 架构师</div>
-                                    <div class="set-salary">25K - 50K</div>
-                                    <div class="set-more">更多工作</div>
-                                </li>
-                                <li>
-                                    <div class="set-ali">京东商城</div>
-                                    <div class="set-java">web前端工程师</div>
-                                    <div class="set-salary">20K - 40K</div>
-                                    <div class="set-more">更多工作</div>
-                                </li>
-                                <li>
-                                    <div class="set-ali">小米</div>
-                                    <div class="set-java">Java技术专家</div>
-                                    <div class="set-salary">30K - 40K</div>
-                                    <div class="set-more">更多工作</div>
-                                </li>
-                                <li style="border-bottom:none">
-                                    <div class="set-ali">网易</div>
-                                    <div class="set-java">自身IOS开发</div>
-                                    <div class="set-salary">10K - 40K</div>
-                                    <div class="set-more">更多工作</div>
-                                </li>
-                            </ul>
-                        </div>
+                       <div>
+                       </div>
                     </li>
                 </ul>
             </div>
@@ -916,7 +1037,11 @@
 <script>
     var mySwiper = new Swiper ('.swiper-container', {
         loop: true, // 循环模式选项
-
+        paginationClickable: true,
+        speed: 2000,
+        observer:true,
+        observeParents:true,
+        autoplay:true,
         // 如果需要分页器
         pagination: {
             el: '.swiper-pagination',
